@@ -19,14 +19,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 //coding team = sambhav jain
 public class MainActivity extends AppCompatActivity {
-    private RequestQueue requestQueue;
+  // private RequestQueue requestQueue;
+    RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       // requestQueue=Volley.newRequestQueue(this);
 
-        requestQueue=Volley.newRequestQueue(this);
+        queue=MySingleton.getInstance(this).getRequestQueue();
 
 //
 //        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET,
@@ -92,9 +94,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    requestQueue.add(jsonArrayRequest);
+  //  requestQueue.add(jsonArrayRequest);
 
        // requestQueue.add(objectRequest);
+        queue.add(jsonArrayRequest);
 
 
 
