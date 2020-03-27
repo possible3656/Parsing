@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -52,6 +53,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 Log.d("happy",""+response);
+                //below method id for getting all the objects particular item
+
+
+                for (int i = 0 ;i<response.length();i++){
+
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        Log.d("happy",""+jsonObject.getString("username"));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                //below method is for getting only one object particular item
+//                try {
+//                    JSONObject jsonObject = response.getJSONObject(1);
+//
+//                    Toast.makeText(MainActivity.this, ""+jsonObject.getString("username"), Toast.LENGTH_SHORT).show();
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }//
 
             }
         }, new Response.ErrorListener() {
