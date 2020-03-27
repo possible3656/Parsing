@@ -12,6 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 //coding team = sambhav jain
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +30,11 @@ public class MainActivity extends AppCompatActivity {
                 "https://jsonplaceholder.typicode.com/users/1", null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("happy","RESULT"+response);
+                try {
+                    Log.d("happy","RESULT "+ response.getString("name"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
         }, new Response.ErrorListener() {
